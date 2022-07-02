@@ -1,0 +1,76 @@
+*
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+body
+{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header, footer
+{
+    height: 14%;
+    width: 100%;
+    background: lightyellow;
+}
+
+
+.section-container 
+{
+    width: 84%;
+    height: 72%;
+    position: relative;
+}
+.section
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: 0.5s;
+}
+
+.slide-btn
+{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.prev
+{
+    top: 50%;
+    left: 4%;
+}
+.next
+{
+    top: 50%;
+    right: 4%;
+}
+
+
+.one
+{
+    background: cornflowerblue;
+}
+
+.two
+{
+    background: palegoldenrod;
+}
+
+.three
+{
+    background: palevioletred;
+}
+
+.four
+{
+    background: darkseagreen;
+}
