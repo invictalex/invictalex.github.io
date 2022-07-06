@@ -7,6 +7,8 @@ var skillOption = document.querySelector(".skill-opt")
 var projOption = document.querySelector(".proj-opt")
 var expOption = document.querySelector(".exp-opt")
 var slider = document.querySelector(".slide-pointer")
+var experienceList = document.querySelectorAll(".exp-li");
+var skillSect2 = document.querySelector(".skills .sect2");
 
 
 var currentSection = 0;
@@ -137,3 +139,23 @@ function moveSlider(val)
         }
     }
 }
+
+
+
+experienceList.forEach(li =>
+{
+    li.onmouseenter = () => 
+    {
+        li.classList.add("lit");
+    }
+
+    li.onmouseout = () => 
+    {
+        setTimeout(function()
+        {
+            li.classList.remove("lit");
+        }, 2000);
+    }
+})
+
+skillSect2.style.width = "0px";

@@ -3,6 +3,7 @@
     margin: 0px;
     padding: 0px;
     font-family: 'League Spartan', sans-serif;
+    list-style:none;
 }
 
 
@@ -71,8 +72,6 @@ li:hover
     transition: ease-out 0.4s;
 }
 
-
-
 .section-container 
 {
     width: 84%;
@@ -105,11 +104,6 @@ h1
     padding-bottom: 10px;
 }
 
-.content
-{
-    flex: 6;
-
-}
 
 .prev
 {
@@ -144,11 +138,9 @@ h1
     display: flex;
 }
 
-
 .welcome-wrapper
 {
     padding: 3%;
-    padding-top: 8%;
 
     display: flex;
     flex-direction: column;
@@ -205,5 +197,196 @@ h1
     100% {margin-top: 0px;}
 }
 
+/*----------------------------------------------------------SKILLS--------------------------------*/
+
+.skills.section
+{
+    display: flex;
+    flex-direction: row;
+    margin-top: 4%;
+    gap: 40px;
+}
+
+.skills .sect1
+{
+    flex: 2;
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+.skills .sect2
+{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
 
 
+
+
+.skill-wrapper
+{
+    flex: 1;
+    display: flex;
+    min-width: 50%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.skill-wrapper h2
+{
+    margin-bottom: 20px;
+}
+
+
+.skill-bar
+{
+    width: 80%;
+}
+
+.bar-bg
+{
+    background: #313639;
+    display: flex;
+    height: 20px;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+.bar-level
+{
+    height: 20px;
+    float: left;
+}
+.skill-level-pointers
+{
+    width: 80%;
+    display: flex;
+}
+
+.skill-level-pointers span:first-child
+{
+    flex: 1;
+    border-left: #313639 solid 2px;
+    height: 15px;
+    box-sizing: border-box;
+}
+
+.skill-level-pointers span:last-child
+{
+    flex: 1;
+    border-left: 2px #313639 solid;
+    border-right: 2px #313639 solid;
+}
+
+.skill-level-labels
+{
+    margin-top: 5px;
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    color: #505050;
+    font-weight: 500;
+}
+
+.js-bar-bg
+{
+    border: #F0DB4F solid 2px;
+
+}
+.js-bar-level
+{
+    background-color: #F0DB4F;
+    width: 75%;
+    animation: js-bar-level 3s;
+}
+
+.css-bar-bg
+{
+    border: #2965f1 solid 2px;
+
+}
+.css-bar-level
+{
+    background-color: #2965f1;
+    width: 75%;
+    animation: js-bar-level 3s;
+}
+
+.html-bar-bg
+{
+    border: #f06529 solid 2px;
+
+}
+.html-bar-level
+{
+    background-color: #f06529;
+    width: 75%;
+    animation: js-bar-level 3s;
+}
+
+.jq-bar-bg
+{
+    border: #78cff5 solid 2px;
+
+}
+.jq-bar-level
+{
+    background-color: #78cff5;
+    width: 75%;
+    animation: js-bar-level 3s;
+}
+
+.wp-bar-bg
+{
+    border: #21759b  solid 2px;
+
+}
+.wp-bar-level
+{
+    background-color: #21759b ;
+    width: 75%;
+    animation: js-bar-level 3s;
+}
+
+.pi-bar-bg
+{
+    border:  #31A8FF solid 2px;
+
+}
+.pi-bar-level
+{
+    background-color:  #31A8FF;
+    width: 75%;
+    animation: js-bar-level 3s;
+}
+
+@keyframes js-bar-level
+{
+    0%      {width: 0%;}
+    100%    {width: 75%;}
+}
+
+.skills .sect2 .title
+{
+    margin-left: -20px;
+    font-size: 40px;
+}
+
+.skills .sect2 .exp-li
+{
+    font-size: 60px;
+    color: black;
+    transition: 2s;
+}
+
+.skills .sect2 .exp-li.lit
+{
+    font-size: 60px;
+    color: white;
+}
