@@ -7,14 +7,17 @@ var skillOption = document.querySelector(".skill-opt")
 var projOption = document.querySelector(".proj-opt")
 var expOption = document.querySelector(".exp-opt")
 var slider = document.querySelector(".slide-pointer")
-var experienceList = document.querySelectorAll(".exp-li");
+var skillSect1 = document.querySelector(".skills .sect1");
 var skillSect2 = document.querySelector(".skills .sect2");
+var skillBarLvls = document.querySelectorAll(".bar-level");
+var skillBarColors = ["#F0DB4F", "#2965f1", "#f06529", "#78cff5", "#21759b", "#31A8FF", "#DC6920"];
 
 
 var currentSection = 0;
 
 
 //                                              FUNCTION DECLARATIONS
+shortenBars();
 toFirstSection();
 
 nextBtn.onclick = () => slideLeft();
@@ -64,6 +67,8 @@ function slideLeft()
 {
     currentSection++;
 
+    changeBars();
+
     if (currentSection <= 3)
     {
         sections.forEach((section, i) =>
@@ -84,6 +89,8 @@ function slideRight()
 {
     currentSection--;
 
+    changeBars();
+
     if (currentSection >=0)
     {
         sections.forEach((section, i) =>
@@ -102,6 +109,8 @@ function slideRight()
 function slideTo(secNum)
 {
     currentSection = secNum;
+
+    changeBars();
 
     sections.forEach((section, i) =>
     {
@@ -142,20 +151,55 @@ function moveSlider(val)
 
 
 
-experienceList.forEach(li =>
+// experienceList.forEach(li =>
+// {
+//     li.onmouseenter = () => 
+//     {
+//         li.classList.add("lit");
+//     }
+
+//     li.onmouseout = () => 
+//     {
+//         setTimeout(function()
+//         {
+//             li.classList.remove("lit");
+//         }, 2000);
+//     }
+// })
+
+function changeBars() 
 {
-    li.onmouseenter = () => 
+    if (currentSection == 1)
     {
-        li.classList.add("lit");
+        extendBars();
+    } else
+    {
+        shortenBars();
     }
+}
 
-    li.onmouseout = () => 
-    {
-        setTimeout(function()
+
+function shortenBars()
+{
+    skillBarLvls.forEach(bar =>
         {
-            li.classList.remove("lit");
-        }, 2000);
-    }
-})
+            bar.classList.add("inactive");
+        })
+}
 
-skillSect2.style.width = "0px";
+
+function extendBars()
+{
+    skillBarLvls.forEach(bar =>
+        {
+            bar.classList.remove("inactive");
+        })
+}
+
+function changeSkillFocus()
+{
+    skillSect2.onmouseenter = () => skillSect2.classList.add("focus");
+    skillSect1.onmouseenter = () => skillSect2.classList.remove("focus");
+}
+
+changeSkillFocus();

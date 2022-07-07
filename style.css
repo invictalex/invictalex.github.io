@@ -98,21 +98,15 @@ li:hover
     align-items: flex-end;
 }
 
-h1
-{
-    border-bottom: white solid 4px;
-    padding-bottom: 10px;
-}
-
 
 .prev
 {
-    width: 50px;
+    width: 40px;
     height: auto;
     transition: 0.5s;
     position: absolute;
     top: 50%;
-    left: 4%;
+    left: 2%;
 }
 
 .prev:hover, .next:hover
@@ -123,12 +117,12 @@ h1
 }
 .next
 {
-    width: 50px;
+    width: 40px;
     height: auto;
     transition: 0.5s;
     position: absolute;
     top: 50%;
-    right: 4%;
+    right: 2%;
 }
 
 .section
@@ -203,75 +197,148 @@ h1
 {
     display: flex;
     flex-direction: row;
-    margin-top: 4%;
-    gap: 40px;
+    gap: 80px;
 }
 
 .skills .sect1
 {
-    flex: 2;
-    display: inline-flex;
-    flex-wrap: wrap;
-}
-.skills .sect2
-{
-    flex: 1;
+    flex: 10;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+    gap: 25px;
 }
-
-
-
-
-.skill-wrapper
-{
-    flex: 1;
-    display: flex;
-    min-width: 50%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.skill-wrapper h2
-{
-    margin-bottom: 20px;
-}
-
 
 .skill-bar
 {
-    width: 80%;
+    width: 100%;
 }
 
-.bar-bg
+.bar-wrapper
 {
-    background: #313639;
     display: flex;
-    height: 20px;
+    height: 40px;
     width: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: all 0.3s ease-in-out;
 }
 .bar-level
 {
-    height: 20px;
+    height: 40px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     float: left;
+    transition: all 2s ease-out;
+
 }
+.bar-title
+{
+    z-index:1;
+    padding-left: 5px;
+    width: 30.5%;
+    height: 40px;
+    color: black;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+}
+
+h1
+{
+    margin-top: 10px;
+    z-index: 300;
+}
+
+/*EACH BAR*/
+
+
+.js-bar-title
+{
+    background: #F0DB4F;
+}
+.js-bar-level
+{
+    background-color: #F0DB4F;
+    width: 42.5%;
+    animation: js-bar-level 3s;
+}
+
+.css-bar-title
+{
+    background: #2965f1;
+}
+.css-bar-level
+{
+    background-color: #2965f1;
+    width: 34.5%;
+    animation: js-bar-level 3s;
+}
+
+.html-bar-title
+{
+    background: #f06529;
+}
+.html-bar-level
+{
+    background-color: #f06529;
+    width: 49.5%;
+    animation: js-bar-level 3s;
+}
+
+.jq-bar-title
+{
+    background: #78cff5;
+}
+.jq-bar-level
+{
+    background-color: #78cff5;
+    width: 24.5%;
+    animation: js-bar-level 3s;
+}
+
+.wp-bar-title
+{
+    background: #21759b;
+}
+.wp-bar-level
+{
+    background-color: #21759b ;
+    width: 29.5%;
+    animation: js-bar-level 3s;
+}
+.ps-bar-title
+{
+    background: #31A8FF;
+}
+.ps-bar-level
+{
+    background-color:  #31A8FF;
+    width: 45.5%;
+    animation: js-bar-level 3s;
+}
+.ai-bar-title
+{
+    background: #DC6920;
+}
+.ai-bar-level
+{
+    background-color:  #DC6920;
+    width: 53.5%;
+    animation: js-bar-level 3s;
+}
+
+/*METRIC*/
+
+
 .skill-level-pointers
 {
-    width: 80%;
+    width: 100%;
     display: flex;
 }
 
 .skill-level-pointers span:first-child
 {
     flex: 1;
-    border-left: #313639 solid 2px;
+    border-left: white solid 2px;
+    border-bottom: white solid 2px;
     height: 15px;
     box-sizing: border-box;
 }
@@ -279,114 +346,58 @@ h1
 .skill-level-pointers span:last-child
 {
     flex: 1;
-    border-left: 2px #313639 solid;
-    border-right: 2px #313639 solid;
+    border-left: 2px white solid;
+    border-right: 2px white solid;
+    border-bottom: 2px white solid;
 }
 
 .skill-level-labels
 {
-    margin-top: 5px;
-    width: 85%;
+    margin-top: 15px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     text-transform: uppercase;
-    color: #505050;
+    color: white;
     font-weight: 500;
 }
 
-.js-bar-bg
+.inactive
 {
-    border: #F0DB4F solid 2px;
-
-}
-.js-bar-level
-{
-    background-color: #F0DB4F;
-    width: 75%;
-    animation: js-bar-level 3s;
+    width: 0%;
 }
 
-.css-bar-bg
-{
-    border: #2965f1 solid 2px;
+/*SECT2*/
 
-}
-.css-bar-level
+.skills .sect2
 {
-    background-color: #2965f1;
-    width: 75%;
-    animation: js-bar-level 3s;
-}
-
-.html-bar-bg
-{
-    border: #f06529 solid 2px;
-
-}
-.html-bar-level
-{
-    background-color: #f06529;
-    width: 75%;
-    animation: js-bar-level 3s;
-}
-
-.jq-bar-bg
-{
-    border: #78cff5 solid 2px;
-
-}
-.jq-bar-level
-{
-    background-color: #78cff5;
-    width: 75%;
-    animation: js-bar-level 3s;
-}
-
-.wp-bar-bg
-{
-    border: #21759b  solid 2px;
-
-}
-.wp-bar-level
-{
-    background-color: #21759b ;
-    width: 75%;
-    animation: js-bar-level 3s;
-}
-
-.pi-bar-bg
-{
-    border:  #31A8FF solid 2px;
-
-}
-.pi-bar-level
-{
-    background-color:  #31A8FF;
-    width: 75%;
-    animation: js-bar-level 3s;
-}
-
-@keyframes js-bar-level
-{
-    0%      {width: 0%;}
-    100%    {width: 75%;}
-}
-
-.skills .sect2 .title
-{
-    margin-left: -20px;
-    font-size: 40px;
-}
-
-.skills .sect2 .exp-li
-{
-    font-size: 60px;
-    color: black;
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: flex-end;
+    margin-bottom: 30px;
     transition: 2s;
 }
 
-.skills .sect2 .exp-li.lit
+
+
+.skills .sect2 .title
 {
-    font-size: 60px;
-    color: white;
+    width: 85%;
+    font-size: 2vw;
 }
+
+.skills .sect2 p
+{
+    width: 85%;
+    height: 350px;
+    font-size: 3vw;
+    overflow: hidden;
+}
+.skills .sect2.focus
+{
+    flex: 7;
+}
+
+
