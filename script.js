@@ -16,6 +16,11 @@ var skillBarList = ["js", "css", "html", "jq", "wp", "ps", "ai"];
 var skillBarPercentages = [73, 65, 80, 55, 60, 85, 82];
 var defaultWidth = 31;
 var experienceList = document.querySelectorAll(".experience");
+var projectBoxes = document.querySelectorAll(".box");
+var projectSlide1s = document.querySelectorAll(".project-slide1");
+var projectSlide2s = document.querySelectorAll(".project-slide2");
+var projectBoxColours = ["#00AE6B", "#F0DB4F", "#2965f1", "#21759b", "#78cff5", "#f06529"];
+
 
 var currentSection = 0;
 
@@ -231,4 +236,29 @@ function setSkillBarsDefault()
         text.style.background = `${skillBarColors[i]}`;
     })
 }
+
+projectBoxes.forEach(box =>
+    {
+        
+        box.onmouseenter = (e) => 
+        {
+            var slideOne = e.path[0].children[0];
+            slideOne.classList.add("left");
+        }
+        box.onmouseleave = (e) => 
+        {
+            var slideOne = e.path[0].children[0];
+            slideOne.classList.remove("left");
+        }
+    })
+
+projectSlide1s.forEach((slide, i) =>
+    {
+        slide.style.background = projectBoxColours[i];
+    })
+
+    projectSlide2s.forEach((slide, i) =>
+    {
+        slide.style.background = projectBoxColours[i];
+    })
 
