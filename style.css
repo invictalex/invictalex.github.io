@@ -4,8 +4,8 @@
     padding: 0px;
     font-family: 'League Spartan', sans-serif;
     list-style:none;
+    cursor: default;
 }
-
 
 body
 {
@@ -23,10 +23,18 @@ header, footer
     width: 84%;
 }
 
+.spacer
+{
+    height: 10%;
+    width: 84%;
+}
+
 header
 {
     display: flex;
 }
+
+/*------------------------------FIXED ELEMENTS------------------------*/
 
 .name-section
 {
@@ -85,19 +93,10 @@ li:hover
     height: 100%;
     position: absolute;
     transition: 0.5s;
-
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 }
-
-.section-title
-{
-    flex: 1;
-    padding-left: 40px;
-    display: flex;
-    align-items: flex-end;
-}
-
 
 .prev
 {
@@ -108,13 +107,6 @@ li:hover
     top: 50%;
     left: 2%;
 }
-
-.prev:hover, .next:hover
-{
-    transform: scale(1.2);
-    fill: green;
-    cursor: pointer;
-}
 .next
 {
     width: 40px;
@@ -124,61 +116,70 @@ li:hover
     top: 50%;
     right: 2%;
 }
-
-.section
+.prev:hover, .next:hover
 {
-    box-sizing: border-box;
+    transform: scale(1.2);
+    cursor: pointer;
+}
 
+/*--------------------------------WELCOME------------------------*/
+
+.welcome.section
+{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .welcome-wrapper
 {
-    padding: 3%;
-
     display: flex;
     flex-direction: column;
-    gap: 20px;
-
+    gap: 50px;
+    margin-bottom: 70px;
 }
-.statement1
+.welcome-wrapper .text1
 {
     font-size: 100px;
     font-weight: 700;
 }
-.statement2
+.welcome-wrapper .text2
 {
     color: gray;
-    padding-top: 30px;
     font-size: 60px;
     font-weight: 700;
     display: flex;
     gap: 20px;
 }
-.statement3
+.welcome-wrapper .text3
 {
-    padding-top: 30px;
     font-size: 80px;
     font-weight: 700;
     color: palegoldenrod;
 }
 
-.vert-slide
+.text2 .slide-intro
+{
+    white-space: nowrap;
+}
+
+.text2-slider
 {
     height: 60px;
     overflow: hidden;
 }
 
-.vert-slide-1, .vert-slide-2, .vert-slide-3, .vert-slide-4
+.text2-slider .slide
 {
     height: 60px;
+    width: 581px;
 }
-.vert-slide-1
+.text2-slider #slide1
 {
-    animation: slide 10s ease-in-out infinite;
+    animation: slide-down 10s ease-in-out infinite;
 }
 
-@keyframes slide 
+@keyframes slide-down
 {
     0% {margin-top: -240px;}
     5% {margin-top: -180px;}
@@ -202,13 +203,12 @@ li:hover
 
 .skills .sect1
 {
-    flex: 10;
+    flex: 2;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     gap: 25px;
 }
-
 .skill-bar
 {
     width: 100%;
@@ -233,7 +233,7 @@ li:hover
 {
     z-index:1;
     padding-left: 5px;
-    width: 30.5%;
+    width: 31%;
     height: 40px;
     color: black;
     font-size: 26px;
@@ -247,85 +247,53 @@ h1
     z-index: 300;
 }
 
-/*EACH BAR*/
+/*SKILL BAR KEYFRAMES*/
+
+@keyframes js-pulse
+{
+    0% {width: 42%}
+    50% {width: 40%}
+    100% {width: 42%}
+}
+@keyframes css-pulse
+{
+    0% {width: 34%}
+    50% {width: 32%}
+    100% {width: 34%}
+}
+@keyframes html-pulse
+{
+    0% {width: 49%}
+    50% {width: 47%}
+    100% {width: 49%}
+}
+@keyframes jq-pulse
+{
+    0% {width: 24%}
+    50% {width: 22%}
+    100% {width: 24%}
+}
+@keyframes wp-pulse
+{
+    0% {width: 29%}
+    50% {width: 27%}
+    100% {width: 29%}
+}
+@keyframes ps-pulse
+{
+    0% {width: 54%}
+    50% {width: 52%}
+    100% {width: 54%}
+}
+@keyframes ai-pulse
+{
+    0% {width: 51%}
+    50% {width: 49%}
+    100% {width: 51%}
+}
 
 
-.js-bar-title
-{
-    background: #F0DB4F;
-}
-.js-bar-level
-{
-    background-color: #F0DB4F;
-    width: 42.5%;
-    animation: js-bar-level 3s;
-}
-
-.css-bar-title
-{
-    background: #2965f1;
-}
-.css-bar-level
-{
-    background-color: #2965f1;
-    width: 34.5%;
-    animation: js-bar-level 3s;
-}
-
-.html-bar-title
-{
-    background: #f06529;
-}
-.html-bar-level
-{
-    background-color: #f06529;
-    width: 49.5%;
-    animation: js-bar-level 3s;
-}
-
-.jq-bar-title
-{
-    background: #78cff5;
-}
-.jq-bar-level
-{
-    background-color: #78cff5;
-    width: 24.5%;
-    animation: js-bar-level 3s;
-}
-
-.wp-bar-title
-{
-    background: #21759b;
-}
-.wp-bar-level
-{
-    background-color: #21759b ;
-    width: 29.5%;
-    animation: js-bar-level 3s;
-}
-.ps-bar-title
-{
-    background: #31A8FF;
-}
-.ps-bar-level
-{
-    background-color:  #31A8FF;
-    width: 45.5%;
-    animation: js-bar-level 3s;
-}
-.ai-bar-title
-{
-    background: #DC6920;
-}
-.ai-bar-level
-{
-    background-color:  #DC6920;
-    width: 53.5%;
-    animation: js-bar-level 3s;
-}
-
-/*METRIC*/
+/*SKILL LEVEL LABELS*/
 
 
 .skill-level-pointers
@@ -362,42 +330,33 @@ h1
     font-weight: 500;
 }
 
-.inactive
-{
-    width: 0%;
-}
 
 /*SECT2*/
 
 .skills .sect2
 {
-    flex: 5;
+    flex: 1;
+
+
     display: flex;
     flex-direction: column;
     gap: 20px;
-    justify-content: flex-end;
-    margin-bottom: 30px;
-    transition: 2s;
+    justify-content: center;
+    margin-top: 160px;
 }
-
-
 
 .skills .sect2 .title
 {
-    width: 85%;
-    font-size: 2vw;
+    font-size: 38px;
+    width: 90%;
+
 }
 
 .skills .sect2 p
 {
+    font-size: 55px;
     width: 85%;
-    height: 350px;
-    font-size: 3vw;
     overflow: hidden;
-}
-.skills .sect2.focus
-{
-    flex: 7;
-}
 
+}
 

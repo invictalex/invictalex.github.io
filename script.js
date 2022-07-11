@@ -10,14 +10,18 @@ var slider = document.querySelector(".slide-pointer")
 var skillSect1 = document.querySelector(".skills .sect1");
 var skillSect2 = document.querySelector(".skills .sect2");
 var skillBarLvls = document.querySelectorAll(".bar-level");
+var skillBarTexts = document.querySelectorAll(".bar-title");
 var skillBarColors = ["#F0DB4F", "#2965f1", "#f06529", "#78cff5", "#21759b", "#31A8FF", "#DC6920"];
-
+var skillBarList = ["js", "css", "html", "jq", "wp", "ps", "ai"];
+var skillBarPercentages = [73, 65, 80, 55, 60, 85, 82];
+var defaultWidth = 31;
+var experienceList = document.querySelectorAll(".experience");
 
 var currentSection = 0;
 
 
 //                                              FUNCTION DECLARATIONS
-shortenBars();
+setSkillBarsDefault();
 toFirstSection();
 
 nextBtn.onclick = () => slideLeft();
@@ -151,55 +155,80 @@ function moveSlider(val)
 
 
 
-// experienceList.forEach(li =>
-// {
-//     li.onmouseenter = () => 
-//     {
-//         li.classList.add("lit");
-//     }
-
-//     li.onmouseout = () => 
-//     {
-//         setTimeout(function()
-//         {
-//             li.classList.remove("lit");
-//         }, 2000);
-//     }
-// })
-
-function changeBars() 
+experienceList.forEach(li =>
 {
-    if (currentSection == 1)
+    li.onmouseenter = () => 
     {
-        extendBars();
-    } else
-    {
-        shortenBars();
+        li.style.color = `${skillBarColors[Math.floor(Math.random()*skillBarColors.length)]}`;
     }
-}
 
+    li.onmouseout = () => 
+    {
+        
+            li.style.color = "white";
+        
+    }
+})
 
 function shortenBars()
 {
-    skillBarLvls.forEach(bar =>
+    skillBarLvls.forEach(skillBar =>
         {
-            bar.classList.add("inactive");
+            skillBar.style.width = `0%`;
         })
 }
 
 
 function extendBars()
 {
-    skillBarLvls.forEach(bar =>
-        {
-            bar.classList.remove("inactive");
-        })
+    skillBarLvls.forEach((skillBar, i) => 
+        skillBar.style.width = `${skillBarPercentages[i] - defaultWidth}%`);
+        
 }
 
-function changeSkillFocus()
+function changeBars() 
 {
-    skillSect2.onmouseenter = () => skillSect2.classList.add("focus");
-    skillSect1.onmouseenter = () => skillSect2.classList.remove("focus");
+
+    if (currentSection == 1)
+    {
+        extendBars();
+        setTimeout(pulseBars, 2000);
+    } else
+    {
+        shortenBars();
+    }
 }
 
-changeSkillFocus();
+function pulseBars()
+{
+
+    skillBarLvls.forEach((skillBar, i) =>
+    {
+        
+
+        skillBar.onmouseenter = () => 
+        {
+            skillBar.style.animation = `${skillBarList[i]}-pulse 1s`;
+        }
+        skillBar.addEventListener("animationend", () => 
+        {
+            skillBar.style.animation = "";
+        }) 
+    })
+}
+
+
+function setSkillBarsDefault()
+{
+    skillBarLvls.forEach((skillBar, i) =>
+    {
+        skillBar.style.width = `0%`;
+        skillBar.style.background = `${skillBarColors[i]}`;
+    })
+
+    skillBarTexts.forEach((text, i) =>
+    {
+        text.style.background = `${skillBarColors[i]}`;
+    })
+}
+
