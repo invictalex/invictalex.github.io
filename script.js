@@ -20,6 +20,7 @@ var projectBoxes = document.querySelectorAll(".box");
 var projectSlide1s = document.querySelectorAll(".project-slide1");
 var projectSlide2s = document.querySelectorAll(".project-slide2");
 var projectBoxColours = ["#00AE6B", "#F0DB4F", "#2965f1", "#21759b", "#78cff5", "#f06529"];
+var experienceBars = document.querySelectorAll(".bar");
 
 
 var currentSection = 0;
@@ -261,4 +262,42 @@ projectSlide1s.forEach((slide, i) =>
     {
         slide.style.background = projectBoxColours[i];
     })
+
+experienceBars.forEach(bar =>
+{
+    var barClass = bar.classList;
+    var titleClass = bar.children[0].classList;
+    var contentClass = bar.children[1].classList;
+
+    bar.onclick = () =>
+    {
+        if (barClass.contains("expanded"))
+        {
+            barClass.toggle("expanded");
+            setTimeout(() =>
+            {
+                contentClass.toggle("hidden");
+                titleClass.toggle("hidden");
+            }, 500);
+        } else if (!barClass.contains("expanded"))
+        {
+            resetExpBars();
+            
+            contentClass.toggle("hidden");
+            titleClass.toggle("hidden");
+            setTimeout(barClass.toggle("expanded"), 500);
+        }
+    }
+})
+
+
+function resetExpBars()
+{
+    experienceBars.forEach(bar =>
+        {
+            bar.classList.remove("expanded");
+            bar.children[0].classList.remove("hidden");
+            bar.children[1].classList.add("hidden");
+        })
+}
 

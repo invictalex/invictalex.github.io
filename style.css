@@ -450,3 +450,174 @@ a:hover
     transform: scale(1.15);
     cursor: pointer;
 }
+
+/*----------------------------------------------EXPERIENCE----------------------------------------*/
+
+
+.experience.section
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.bar
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    border-radius: 10px;
+    transition: 0.5s;
+
+    max-height: 100px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.bar.expanded
+{
+
+    max-height: 600px;
+}
+
+.bar h3
+{
+    margin-top: 10px;
+    font-size: 40px;
+    padding: 20px;
+    text-transform: uppercase;
+    color: black;
+    transition: 0.5s;
+    cursor: pointer;
+
+}
+
+
+.content
+{
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 30px;
+}
+
+.content p
+{
+    color: black;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.transparent
+{
+    opacity: 0;
+}
+
+.hidden
+{
+    
+    display: none;
+}
+
+.itech
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.itech-spacer
+{
+    flex: 3
+}
+
+.itech-bar
+{
+    flex: 10;
+    background-color: #78cff5;
+
+}
+
+.itech-spacer2
+{
+    flex: 1;
+}
+
+.top
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.top-spacer
+{
+    flex: 2
+}
+
+.top-bar
+{
+    flex: 5;
+    background-color: #F0DB4F ;
+}
+
+
+
+.levendi
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.levendi-bar
+{
+    flex: 3.5;
+    background-color: #f06529;
+
+
+}
+
+.levendi-spacer
+{
+    flex: 10;
+}
+
+.month-pointers
+{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.month
+{
+    flex: 1;
+    border-bottom: white solid 2px;
+    border-right: white solid 2px;
+    height: 15px;
+
+}
+
+.month-pointers div:first-child
+{
+    border-left: white solid 2px;
+    border-bottom: white solid 2px;
+    border-right: white solid 2px;
+}
+
+.month-labels
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+
+.year
+{
+    display: grid;
+    place-items: center;
+}
