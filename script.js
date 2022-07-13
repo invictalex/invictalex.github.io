@@ -15,7 +15,7 @@ var skillBarColors = ["#F0DB4F", "#2965f1", "#f06529", "#78cff5", "#21759b", "#3
 var skillBarList = ["js", "css", "html", "jq", "wp", "ps", "ai"];
 var skillBarPercentages = [73, 65, 80, 55, 60, 85, 82];
 var defaultWidth = 31;
-var experienceList = document.querySelectorAll(".experience");
+var experienceList = document.querySelectorAll(".experience-li");
 var projectBoxes = document.querySelectorAll(".box");
 var projectSlide1s = document.querySelectorAll(".project-slide1");
 var projectSlide2s = document.querySelectorAll(".project-slide2");
@@ -29,6 +29,9 @@ var currentSection = 0;
 //                                              FUNCTION DECLARATIONS
 setSkillBarsDefault();
 toFirstSection();
+animateProjectPage()
+animateExperiencePage();
+animateSkillsList();
 
 nextBtn.onclick = () => slideLeft();
 document.onkeydown = (e) => 
@@ -77,7 +80,8 @@ function slideLeft()
 {
     currentSection++;
 
-    changeBars();
+    activateSkillBars();
+
 
     if (currentSection <= 3)
     {
@@ -99,7 +103,7 @@ function slideRight()
 {
     currentSection--;
 
-    changeBars();
+    activateSkillBars();
 
     if (currentSection >=0)
     {
@@ -120,7 +124,7 @@ function slideTo(secNum)
 {
     currentSection = secNum;
 
-    changeBars();
+    activateSkillBars();
 
     sections.forEach((section, i) =>
     {
@@ -159,8 +163,8 @@ function moveSlider(val)
     }
 }
 
-
-
+function animateSkillsList()
+{
 experienceList.forEach(li =>
 {
     li.onmouseenter = () => 
@@ -168,15 +172,24 @@ experienceList.forEach(li =>
         li.style.color = `${skillBarColors[Math.floor(Math.random()*skillBarColors.length)]}`;
     }
 
-    li.onmouseout = () => 
-    {
-        
-            li.style.color = "white";
-        
-    }
+    li.onmouseout = () =>   li.style.color = "white";
 })
+}
 
-function shortenBars()
+function activateSkillBars() 
+{
+
+    if (currentSection == 1)
+    {
+        extendSkillBars();
+        setTimeout(pulseSkillBars, 2000);
+    } else
+    {
+        shortenSkillBars();
+    }
+}
+
+function shortenSkillBars()
 {
     skillBarLvls.forEach(skillBar =>
         {
@@ -185,33 +198,17 @@ function shortenBars()
 }
 
 
-function extendBars()
+function extendSkillBars()
 {
     skillBarLvls.forEach((skillBar, i) => 
         skillBar.style.width = `${skillBarPercentages[i] - defaultWidth}%`);
         
 }
 
-function changeBars() 
+function pulseSkillBars()
 {
-
-    if (currentSection == 1)
-    {
-        extendBars();
-        setTimeout(pulseBars, 2000);
-    } else
-    {
-        shortenBars();
-    }
-}
-
-function pulseBars()
-{
-
     skillBarLvls.forEach((skillBar, i) =>
     {
-        
-
         skillBar.onmouseenter = () => 
         {
             skillBar.style.animation = `${skillBarList[i]}-pulse 1s`;
@@ -238,58 +235,66 @@ function setSkillBarsDefault()
     })
 }
 
-projectBoxes.forEach(box =>
-    {
-        
-        box.onmouseenter = (e) => 
-        {
-            var slideOne = e.path[0].children[0];
-            slideOne.classList.add("left");
-        }
-        box.onmouseleave = (e) => 
-        {
-            var slideOne = e.path[0].children[0];
-            slideOne.classList.remove("left");
-        }
-    })
-
-projectSlide1s.forEach((slide, i) =>
-    {
-        slide.style.background = projectBoxColours[i];
-    })
-
-    projectSlide2s.forEach((slide, i) =>
-    {
-        slide.style.background = projectBoxColours[i];
-    })
-
-experienceBars.forEach(bar =>
+function animateProjectPage()
 {
-    var barClass = bar.classList;
-    var titleClass = bar.children[0].classList;
-    var contentClass = bar.children[1].classList;
-
-    bar.onclick = () =>
-    {
-        if (barClass.contains("expanded"))
+    projectBoxes.forEach(box =>
         {
-            barClass.toggle("expanded");
-            setTimeout(() =>
+            box.onmouseenter = (e) => 
             {
+                var slideOne = e.path[0].children[0];
+                slideOne.classList.add("left");
+            }
+            box.onmouseleave = (e) => 
+            {
+                var slideOne = e.path[0].children[0];
+                slideOne.classList.remove("left");
+            }
+        })
+        
+        projectSlide1s.forEach((slide, i) =>
+        {
+            slide.style.background = projectBoxColours[i];
+        })
+        
+        projectSlide2s.forEach((slide, i) =>
+        {
+            slide.style.background = projectBoxColours[i];
+        })
+}
+
+function animateExperiencePage()
+{
+    experienceBars.forEach(bar =>
+    {
+        var barClass = bar.classList;
+        var titleClass = bar.children[0].classList;
+        var contentClass = bar.children[1].classList;
+    
+        bar.onclick = () =>
+        {
+            bar.classList.remove("hovered");
+    
+            if (barClass.contains("expanded"))
+            {
+                barClass.toggle("expanded");
+                setTimeout(() =>
+                {
+                    contentClass.toggle("hidden");
+                    titleClass.toggle("hidden");
+                }, 350);
+            } else if (!barClass.contains("expanded"))
+            {
+                resetExpBars();
+                
                 contentClass.toggle("hidden");
                 titleClass.toggle("hidden");
-            }, 500);
-        } else if (!barClass.contains("expanded"))
-        {
-            resetExpBars();
-            
-            contentClass.toggle("hidden");
-            titleClass.toggle("hidden");
-            setTimeout(barClass.toggle("expanded"), 500);
+                barClass.toggle("expanded");
+            }
         }
-    }
-})
+    })
 
+    pulseExpBars();
+}
 
 function resetExpBars()
 {
@@ -301,3 +306,15 @@ function resetExpBars()
         })
 }
 
+function pulseExpBars()
+{
+    experienceBars.forEach(bar =>
+    {
+        bar.onmouseenter = () => 
+        {
+            if (!bar.classList.contains("expanded"))
+                bar.classList.add("hovered");
+        }
+    })
+    experienceBars.forEach(bar => {bar.onmouseleave = () => bar.classList.remove("hovered");})
+}
