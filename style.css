@@ -17,35 +17,35 @@ body
     color: white;
 }
 
-header, footer
+header
 {
-    height: 14%;
+    flex: 1;
     width: 84%;
+    display: flex;
 }
 
 .section-container 
 {
+    flex: 6;
     width: 84%;
-    height: 72%;
     position: relative;
     overflow: hidden;
 }
 
-
-header
-{
-    display: flex;
-}
-
 /*------------------------------FIXED ELEMENTS------------------------*/
 
-.name-section
+.site-logo
 {
     flex: 1;
     display: flex;
     align-items:flex-end;
     justify-content:left;
-    font-size:x-large;
+}
+
+.site-logo h2:first-child
+{
+    font-size: clamp(1.5rem, 3vw, 8vw);
+
 }
 
 .wrapper
@@ -61,7 +61,6 @@ header
 .nav-menu>ul
 {
     display: flex;
-    list-style: none;
     font-size: xx-large;
     gap: 30px;
 }
@@ -81,6 +80,34 @@ li:hover
     height: 3px;
     background-color: white;
     transition: ease-out 0.4s;
+}
+
+.mobile-section-title
+{
+    font-size: clamp (2rem, 5vw, 8vw);
+    padding: 10px;
+    width: 70px;
+    text-align: center;
+    border: solid white 2px;
+    margin-right: 20px;
+    display: none;
+    background: white;
+    color: black;
+}
+
+@media (max-width: 1062px)
+{
+    .mobile-section-title
+    {
+        display:block;
+    }
+
+    .nav-menu
+    {
+        display: none;
+    }
+
+    
 }
 
 
@@ -133,25 +160,55 @@ li:hover
 {
     display: flex;
     flex-direction: column;
-    gap: 50px;
-    margin-bottom: 70px;
+    gap: 1rem;
 }
 .welcome-wrapper .text1
 {
     font-size: 100px;
+    font-size: clamp(3.5rem, 6vw, 15rem);
     font-weight: 700;
+    margin-bottom: 20px;
 }
 .welcome-wrapper .text2
 {
     color: #5c87ec;
     font-size: 60px;
+    font-size: clamp(2rem,5vw, 15rem);
     font-weight: 700;
-    display: flex;
-    gap: 20px;
+    display: column;
+    flex-direction: row;
+    text-align: end;
 }
+
+
+@media (max-width: 1230px)
+{
+    .welcome-wrapper .text1
+    {
+        font-size: clamp(2.5rem, 6vw, 15rem);
+    }
+    .welcome-wrapper .text2
+    {
+        font-size: clamp(1.8rem, 7vw, 15rem);
+    }
+    .welcome-wrapper .text3
+    {
+        font-size: clamp(2.5rem, 6vw, 15rem);
+    }
+}
+
+@media (max-width: 580px)
+{
+    .text2-slider
+    {
+        margin-top: -30px;
+    }
+}
+
 .welcome-wrapper .text3
 {
     font-size: 80px;
+    font-size: clamp(3rem, 5.5vw, 15rem);
     font-weight: 700;
     color: #ebdc80;
 }
@@ -159,18 +216,23 @@ li:hover
 .text2 .slide-intro
 {
     white-space: nowrap;
+    margin-bottom: -15px;
 }
 
 .text2-slider
 {
-    height: 60px;
+    height: 100px;
     overflow: hidden;
+    
 }
 
 .text2-slider .slide
 {
-    height: 60px;
-    width: 581px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
 }
 .text2-slider #slide1
 {
@@ -179,32 +241,37 @@ li:hover
 
 @keyframes slide-down
 {
-    0% {margin-top: -240px;}
-    5% {margin-top: -180px;}
-    25% {margin-top: -180px;}
-    30% {margin-top: -120px;}
-    50% {margin-top: -120px;}
-    55% {margin-top: -60px;}
-    75% {margin-top: -60px;}
+    0% {margin-top: -400px;}
+    5% {margin-top: -300px;}
+    25% {margin-top: -300px;}
+    30% {margin-top: -200px;}
+    50% {margin-top: -200px;}
+    55% {margin-top: -100px;}
+    75% {margin-top: -100px;}
     80% {margin-top: 0px;}
     100% {margin-top: 0px;}
 }
+
 /*----------------------------------------------------------SKILLS--------------------------------*/
 
 .skills.section
 {
     display: flex;
     flex-direction: row;
-    gap: 80px;
+    gap: 2rem;
+    align-items: center;
 }
+
+
 
 .skills .sect1
 {
     flex: 2;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     gap: 25px;
+    height: 70%;
+
 }
 .skill-bar
 {
@@ -243,6 +310,7 @@ h1
     margin-top: 10px;
     z-index: 300;
 }
+
 
 /*SKILL BAR KEYFRAMES*/
 
@@ -333,19 +401,17 @@ h1
 .skills .sect2
 {
     flex: 1;
-
-
+    height: 70%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
     justify-content: center;
-    margin-top: 160px;
 }
 
 .skills .sect2 .title
 {
     font-size: 38px;
-    width: 90%;
+    font-size: clamp(1rem, 2vw, 10rem);
 
 }
 
@@ -353,8 +419,50 @@ h1
 {
     color: white;
     font-size: 55px;
-    width: 85%;
+    width: 100%;
     overflow: hidden;
+    font-size: clamp(2rem, 3vw, 10rem);
+}
+@media (max-width: 1000px)
+{
+    .skills.section
+    {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .skills .sect1
+    {
+        width: 100%;
+        gap: 15px;
+        justify-content:end
+    }
+    .skills .sect2
+    {
+        gap: 5px;
+    }
+
+    .bar-wrapper
+    {
+        height: 30px;
+    }
+    .bar-level
+    {
+        height: 30px;
+        animation: hurry 2s;
+    }
+    .bar-title
+    {
+        height: 30px;
+        font-size: 15px;
+       
+    }
+}
+
+@keyframes hurry 
+{
+    0% {height: 30px}
+    100% {height: 30px}
 }
 
 /*---------------------------------------------PROJECTS----------------------------------------*/
@@ -365,8 +473,9 @@ h1
     grid-template-columns: repeat(3, 310px);
     gap: 15px;
     place-content: center;
-   
 }
+
+
 
 .box-tile
 {
@@ -384,6 +493,7 @@ h1
     flex-direction: row;
     background: white;
 }
+
 
 .project-slide1, .project-slide2
 {
@@ -448,6 +558,93 @@ a:hover
     cursor: pointer;
 }
 
+@media (max-width: 1152px)
+{
+    .projects.section
+    {
+        grid-template-columns: repeat(3, 200px);
+
+    }
+    .box
+    {
+        height: 200px;
+    }
+    .project-slide2 p
+    {
+        font-size: 18px;
+        line-height: 23px;
+        padding: 5px;
+        padding-bottom: 0px;
+    }
+    .project-slide1.left
+    {
+        margin-left: -200px;
+    }
+    .project-slide1 h2
+    {
+        font-size: 24px;
+    }
+}
+@media (max-width: 1152px)
+{
+    .projects.section
+    {
+        grid-template-columns: repeat(3, 200px);
+
+    }
+    .box
+    {
+        height: 200px;
+    }
+    .project-slide2 p
+    {
+        font-size: 18px;
+        line-height: 23px;
+        padding: 5px;
+        padding-bottom: 0px;
+    }
+    .project-slide1.left
+    {
+        margin-left: -200px;
+    }
+    .project-slide1 h2
+    {
+        font-size: 24px;
+    }
+}
+@media (max-width: 750px)
+{
+    .projects.section
+    {
+        grid-template-columns: repeat(2, 160px);
+        gap: 5px;
+
+    }
+    .box
+    {
+        height: 160px;
+    }
+    .project-slide2 p
+    {
+        font-size: 15px;
+        line-height: 18px;
+        padding: 5px;
+        padding-bottom: 0px;
+    }
+    .project-slide1.left
+    {
+        margin-left: -160px;
+    }
+    .project-slide1 h2
+    {
+        font-size: 24px;
+    }
+    .project-slide2 h5
+    {
+        padding: 5px;
+        font-size: 15px;
+    }
+}
 /*----------------------------------------------EXPERIENCE----------------------------------------*/
 
 .experience.section
@@ -485,10 +682,12 @@ a:hover
 }
 
 .bar.expanded {height: 370px;}
+.levendi-bar.expanded {height: 310px;}
+
 
 .bar h3
 {
-    font-size: 40px;
+    font-size: clamp(1rem, 2.5vw, 2rem);
     padding: 20px;
     text-transform: uppercase;
     color: black;
@@ -501,7 +700,7 @@ a:hover
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    gap: 30px;
+    gap: 1.5rem;
 }
 
 .content p
@@ -509,6 +708,7 @@ a:hover
     color: black;
     cursor: pointer;
     font-size: 25px;
+    font-size: clamp(0.8rem, 2vw, 1.5rem);
 }
 
 .hidden {   display: none;}
@@ -548,7 +748,7 @@ a:hover
 
 .levendi-bar
 {
-    flex: 3.5;
+    flex: 8;
     background-color: #f06529;
 }
 

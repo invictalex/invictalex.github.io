@@ -21,6 +21,9 @@ var projectSlide1s = document.querySelectorAll(".project-slide1");
 var projectSlide2s = document.querySelectorAll(".project-slide2");
 var projectBoxColours = ["#00AE6B", "#F0DB4F", "#2965f1", "#21759b", "#78cff5", "#f06529"];
 var experienceBars = document.querySelectorAll(".bar");
+var sectionTitle = document.querySelector(".mobile-section-title");
+
+
 
 
 var currentSection = 0;
@@ -56,6 +59,9 @@ function toFirstSection()
 {
     currentSection = 0;
 
+    changeSectionTitle(currentSection);
+
+
     sections.forEach((section, i) =>
     {
         section.style.transform = `translateX(${i*100}%)`;
@@ -68,6 +74,9 @@ function toLastSection()
 {
     currentSection = 3;
 
+    changeSectionTitle(currentSection);
+
+
     sections.forEach((section, i) =>
     {
         section.style.transform = `translateX(${(i-3)*100}%)`;
@@ -79,6 +88,9 @@ function toLastSection()
 function slideLeft()
 {
     currentSection++;
+
+    changeSectionTitle(currentSection);
+
 
     activateSkillBars();
 
@@ -103,6 +115,9 @@ function slideRight()
 {
     currentSection--;
 
+    changeSectionTitle(currentSection);
+
+
     activateSkillBars();
 
     if (currentSection >=0)
@@ -123,6 +138,8 @@ function slideRight()
 function slideTo(secNum)
 {
     currentSection = secNum;
+    
+    changeSectionTitle(currentSection);
 
     activateSkillBars();
 
@@ -317,4 +334,12 @@ function pulseExpBars()
         }
     })
     experienceBars.forEach(bar => {bar.onmouseleave = () => bar.classList.remove("hovered");})
+}
+
+
+function changeSectionTitle(currentSection)
+{
+    var sections = ["welcome", "skills", "projects", "experience"];
+
+    sectionTitle.textContent = sections[currentSection];
 }
