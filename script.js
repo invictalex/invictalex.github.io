@@ -1,12 +1,13 @@
 var sections = document.querySelectorAll(".section");
-var nextBtn = document.querySelector(".next");
-var prevBtn = document.querySelector(".prev");
+var nextBtn = document.querySelector(".next-box");
+var prevBtn = document.querySelector(".prev-box");
 var navOptions = document.querySelectorAll(".option");
 var welcOption = document.querySelector(".welc-opt")
 var skillOption = document.querySelector(".skill-opt")
 var projOption = document.querySelector(".proj-opt")
 var expOption = document.querySelector(".exp-opt")
-var slider = document.querySelector(".slide-pointer")
+var slidePointer = document.querySelector(".slide-pointer")
+var slidePointerSmall = document.querySelector(".slide-pointer-small");
 var skillSect1 = document.querySelector(".skills .sect1");
 var skillSect2 = document.querySelector(".skills .sect2");
 var skillBarLvls = document.querySelectorAll(".bar-level");
@@ -22,6 +23,10 @@ var projectSlide2s = document.querySelectorAll(".project-slide2");
 var projectBoxColours = ["#00AE6B", "#F0DB4F", "#2965f1", "#21759b", "#78cff5", "#f06529"];
 var experienceBars = document.querySelectorAll(".bar");
 var sectionTitle = document.querySelector(".mobile-section-title");
+var skillsButton = document.querySelector(".skills-button");
+var contactIcons = document.querySelectorAll(".icon-box");
+var copied = document.querySelector(".copied-text");
+
 
 
 
@@ -34,17 +39,16 @@ setSkillBarsDefault();
 toFirstSection();
 animateProjectPage()
 animateExperiencePage();
-animateSkillsList();
 
 nextBtn.onclick = () => slideLeft();
 document.onkeydown = (e) => 
 { if (e["key"] == "ArrowRight") 
     slideLeft();
  else if (e["key"] == "ArrowLeft")
-    slideRight();
+    slidePointeright();
 };
 
-prevBtn.onclick = () => slideRight();
+prevBtn.onclick = () => slidePointeright();
 
 welcOption.onclick = () => slideTo(0);
 skillOption.onclick = () => slideTo(1);
@@ -53,6 +57,40 @@ expOption.onclick = () => slideTo(3);
 
 
 //                                              FUNCTION DEFINITIONS
+
+
+
+contactIcons.forEach((icon, i) =>
+{
+    icon.onclick = () =>
+    {
+        if (i == 0)
+        {
+            copied.classList.toggle("phone");
+            navigator.clipboard.writeText("+447472636985");
+            setTimeout(() => {copied.classList.toggle("phone")}, 500);
+        }
+        if (i == 1)
+        {
+            copied.classList.toggle("mail");
+            navigator.clipboard.writeText("alexchristodoulou@ymail.com");
+            setTimeout(() => {copied.classList.toggle("mail")}, 500);
+        }
+        if (i == 2)
+        {
+            window.open("https://www.linkedin.com/in/alex-christodoulou-a94564b9/", "_blank");
+        }
+    }
+    icon.onmouseenter = () => icon.classList.add("focus");
+    icon.onmouseleave = () => icon.classList.remove("focus");
+
+})
+
+function copy(val) 
+{
+   
+    navigator.clipboard.writeText(val);
+}
 
 
 function toFirstSection()
@@ -67,7 +105,7 @@ function toFirstSection()
         section.style.transform = `translateX(${i*100}%)`;
     })
     
-    moveSlider(currentSection);
+    moveslidePointer(currentSection);
 }
 
 function toLastSection()
@@ -82,7 +120,7 @@ function toLastSection()
         section.style.transform = `translateX(${(i-3)*100}%)`;
     }) 
     
-    moveSlider(currentSection);
+    moveslidePointer(currentSection);
 }
 
 function slideLeft()
@@ -108,10 +146,10 @@ function slideLeft()
         toFirstSection();
     }
 
-    moveSlider(currentSection);
+    moveslidePointer(currentSection);
 }
 
-function slideRight()
+function slidePointeright()
 {
     currentSection--;
 
@@ -131,7 +169,7 @@ function slideRight()
     {
         toLastSection();
     } 
-    moveSlider(currentSection);
+    moveslidePointer(currentSection);
 
 }
 
@@ -147,51 +185,63 @@ function slideTo(secNum)
     {
         section.style.transform = `translateX(${(i - currentSection)*100}%)`;
     })
-    moveSlider(currentSection);
+    moveslidePointer(currentSection);
 
 }
 
 
-function moveSlider(val)
+function moveslidePointer(val)
 {
     switch(val)
     {
         case 0: 
         {
-            slider.style.transform = `translateX(0%)`;
-            slider.style.width = "112.7px";
+            slidePointer.style.transform = `translateX(0%)`;
+            slidePointer.style.width = "112.7px";
             break;
         } case 1:
         {
-            slider.style.transform = `translateX(142.7px)`;
-            slider.style.width = "60.69px";
+            slidePointer.style.transform = `translateX(142.7px)`;
+            slidePointer.style.width = "60.69px";
             break;
         }case 2:
         {
-            slider.style.transform = `translateX(233.39px)`;
-            slider.style.width = "103.63px";
+            slidePointer.style.transform = `translateX(233.39px)`;
+            slidePointer.style.width = "103.63px";
             break;
         }case 3:
         {
-            slider.style.transform = `translateX(367.02px)`;
-            slider.style.width = "141.75px";
+            slidePointer.style.transform = `translateX(367.02px)`;
+            slidePointer.style.width = "141.75px";
+            break;
+        }
+    }
+    switch(val)
+    {
+        case 0: 
+        {
+            slidePointerSmall.style.transform = `translateX(0%)`;
+            slidePointerSmall.style.width = "84.13px";
+            break;
+        } case 1:
+        {
+            slidePointerSmall.style.transform = `translateX(99.43px)`;
+            slidePointerSmall.style.width = "45.52px";
+            break;
+        }case 2:
+        {
+            slidePointerSmall.style.transform = `translateX(159.95px)`;
+            slidePointerSmall.style.width = "77.72px";
+            break;
+        }case 3:
+        {
+            slidePointerSmall.style.transform = `translateX(252.67px)`;
+            slidePointerSmall.style.width = "106.33px";
             break;
         }
     }
 }
 
-function animateSkillsList()
-{
-experienceList.forEach(li =>
-{
-    li.onmouseenter = () => 
-    {
-        li.style.color = `${skillBarColors[Math.floor(Math.random()*skillBarColors.length)]}`;
-    }
-
-    li.onmouseout = () =>   li.style.color = "white";
-})
-}
 
 function activateSkillBars() 
 {
@@ -200,9 +250,11 @@ function activateSkillBars()
     {
         extendSkillBars();
         setTimeout(pulseSkillBars, 2000);
+        setTimeout(() => {skillsButton.classList.add("grow")}, 3000);
     } else
     {
         shortenSkillBars();
+        skillsButton.classList.remove("grow");
     }
 }
 
@@ -342,4 +394,46 @@ function changeSectionTitle(currentSection)
     var sections = ["welcome", "skills", "projects", "experience"];
 
     sectionTitle.textContent = sections[currentSection];
+}
+
+skillsButton.onmouseenter = () => 
+{
+    skillsButton.classList.toggle("pulseBtn");
+
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) 
+    {
+        skillsButton.classList.add("open");
+        var plus = skillsButton.children[0];
+        var content = skillsButton.children[1];
+    
+        plus.classList.add("hide");
+        content.classList.remove("hide");
+    }
+}
+skillsButton.onmouseleave = () => 
+{
+    skillsButton.classList.toggle("pulseBtn");
+    skillsButton.classList.remove("open");
+    
+    var plus = skillsButton.children[0];
+    var content = skillsButton.children[1];
+
+    plus.classList.remove("hide");
+    content.classList.add("hide");
+}
+
+skillsButton.onclick = () => 
+{
+    skillsButton.classList.add("open");
+    var plus = skillsButton.children[0];
+    var content = skillsButton.children[1];
+
+    plus.classList.add("hide");
+    content.classList.remove("hide");
+
+}
+
+function activateSkillsButton()
+{
+    skillsButton.classList.add("grow");
 }
