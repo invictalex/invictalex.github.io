@@ -55,6 +55,7 @@ skillPage.onclick = () => slideTo(1);
 projectsPage.onclick = () => slideTo(2);
 experiencePage.onclick = () => slideTo(3);
 
+activateContactIcons();
 setSkillBarsDefault();
 animateSkillsButton();
 animateProjectPage()
@@ -63,37 +64,51 @@ animateExperiencePage();
 
 //                                              FUNCTION DEFINITIONS: FIXED ELEMENTS
 
-
-
-contactIcons.forEach((icon, i) =>
+function activateContactIcons()
 {
-    icon.onclick = () =>
+    contactIcons.forEach((icon, i) =>
     {
-        if (i == 0)
+        icon.onclick = () =>
         {
-            copied.classList.toggle("phone");
-            navigator.clipboard.writeText("+447472636985");
-            setTimeout(() => {copied.classList.toggle("phone")}, 500);
+            if (i == 0)
+            {
+                copied.classList.toggle("phone");
+                navigator.clipboard.writeText("+447472636985");
+                setTimeout(() => {copied.classList.toggle("phone")}, 500);
+            }
+            if (i == 1)
+            {
+                copied.classList.toggle("mail");
+                navigator.clipboard.writeText("alexchristodoulou@ymail.com");
+                setTimeout(() => {copied.classList.toggle("mail")}, 500);
+            }
+            if (i == 2)
+            {
+                window.open("https://www.linkedin.com/in/alex-christodoulou-a94564b9/", "_blank");
+            }
         }
-        if (i == 1)
-        {
-            copied.classList.toggle("mail");
-            navigator.clipboard.writeText("alexchristodoulou@ymail.com");
-            setTimeout(() => {copied.classList.toggle("mail")}, 500);
-        }
-        if (i == 2)
-        {
-            window.open("https://www.linkedin.com/in/alex-christodoulou-a94564b9/", "_blank");
-        }
-    }
-    icon.onmouseenter = () => icon.classList.add("focus");
-    icon.onmouseleave = () => icon.classList.remove("focus");
-
-})
+        icon.onmouseenter = () => icon.classList.add("focus");
+        icon.onmouseleave = () => icon.classList.remove("focus");
+    })
+}
 
 function copyText(val) 
 {
     navigator.clipboard.writeText(val);
+}
+
+function pulseArrows(direction)
+{
+    if (direction == "next")
+    {
+        nextBtn.style.animation = "pulse 1s";
+        nextBtn.onanimationend = () => nextBtn.style.animation = "";
+    } 
+    else if (direction == "prev")
+    {
+        prevBtn.style.animation = "pulse 1s"
+        prevBtn.onanimationend = () => prevBtn.style.animation = "";
+    }
 }
 
 
@@ -121,6 +136,8 @@ function jumpToLastSection()
 
 function slideLeft()
 {
+    pulseArrows("next");
+
     currentSection++;
 
     changeSectionTitleMobile(currentSection);
@@ -138,6 +155,8 @@ function slideLeft()
 
 function slideRight()
 {
+    pulseArrows("prev");
+
     currentSection--;
 
     changeSectionTitleMobile(currentSection);
@@ -310,6 +329,8 @@ function animateExperiencePage()
 
         bar.onclick = () => 
         {
+            bar.classList.remove("hovered");
+
             if (window.innerWidth <=900)
             {
                 lightbox.classList.toggle("hidden");
