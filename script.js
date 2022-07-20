@@ -312,7 +312,6 @@ function animateExperiencePage()
         {
             if (window.innerWidth <=900)
             {
-                alert("working");
                 lightbox.classList.toggle("hidden");
                 lightbox.classList.toggle("animate");
             }
