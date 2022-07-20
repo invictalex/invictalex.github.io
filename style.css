@@ -59,7 +59,6 @@ footer
     height: auto;
     cursor: pointer;
     pointer-events: none;
-
 }
 .icon-box
 {
@@ -112,7 +111,6 @@ footer
 .nav-wrapper
 {
     flex: 1;
-
     display: flex;
     flex-direction: column;
     align-items:flex-end;
@@ -177,7 +175,6 @@ li:hover
 .mobile-nav-menu
 {
     display: none;
-    
 }
 
 .mobile-section-title
@@ -193,13 +190,10 @@ li:hover
         display:flex;
         flex-direction: row;
     }
-
     .nav-menu
     {
         display: none;
     }
-
-    
 }
 
 
@@ -234,7 +228,6 @@ li:hover
     top: 50%;
     right: 2%;
     cursor: pointer;
-
 }
 .prev, .next
 {
@@ -284,7 +277,6 @@ li:hover
     display: flex;
     flex-direction: row;
 }
-
 .welcome-wrapper .text3
 {
     font-size: 80px;
@@ -298,7 +290,6 @@ li:hover
     white-space: nowrap;
     margin-right: 18px;
 }
-
 .text2-slider
 {
     height: 68px;
@@ -306,14 +297,11 @@ li:hover
     white-space: nowrap;
     text-align: center;
 }
-
 .text2-slider .slide
 {
     height: 68px;
     display: flex;
     margin-bottom: 40px;
-  
-
 }
 .text2-slider #slide1
 {
@@ -351,8 +339,14 @@ li:hover
 
 @media (max-width: 580px)
 {
-    .welcome-wrapper    {        text-align: center; gap: 1.5rem;    }
-    .text2-slider .slide {       justify-content: center;}
+    .welcome-wrapper    
+    {        
+        text-align: center; gap: 1.5rem;    
+    }
+    .text2-slider .slide 
+    {       
+        justify-content: center;
+    }
 }
 
 /*----------------------------------------------------------SKILLS--------------------------------*/
@@ -468,7 +462,6 @@ h1
     width: 100%;
     display: flex;
 }
-
 .skill-level-pointers span:first-child
 {
     flex: 1;
@@ -477,7 +470,6 @@ h1
     height: 15px;
     box-sizing: border-box;
 }
-
 .skill-level-pointers span:last-child
 {
     flex: 1;
@@ -485,7 +477,6 @@ h1
     border-right: 2px white solid;
     border-bottom: 2px white solid;
 }
-
 .skill-level-labels
 {
     margin-top: 15px;
@@ -498,14 +489,13 @@ h1
 }
 
 
-/*SECT2*/
+                                                                 
 .skills .sect2
 {
     width: 70%;
     display: flex;
     justify-content: end;
 }
-
 .skills-button
 {
     height: 80px;
@@ -525,29 +515,24 @@ h1
 {
     transform: scale(1);
 }
-
 .skills-button object
 {
     width: 25%;
 }
-
 .skills-button p
 {
     font-size: 27px;
     line-height: 34px;
 }
-
 .hide
 {
     display: none;
 }
-
 .skills-button.pulseBtn
 {
     transform: scale(1.1);
     cursor: pointer;
 }
-
 .skills-button.open
 {
     width: 270px;
@@ -609,13 +594,10 @@ h1
     place-content: center;
 }
 
-
-
 .box-tile
 {
     display: grid;
     place-items: center;
-
 }
 
 .box
@@ -627,7 +609,6 @@ h1
     flex-direction: row;
     background: white;
 }
-
 
 .project-slide1, .project-slide2
 {
@@ -658,7 +639,6 @@ h1
 .project-slide2
 {
     opacity: 0.8;    
-    
 }
 
 .project-slide2 p
@@ -680,11 +660,12 @@ h1
     text-transform: uppercase;
 }
 
-a {
+a 
+{
     color: white;
     text-decoration: none;
     transition: 0.5s;
-  }
+}
 
 a:hover
 {
@@ -724,7 +705,6 @@ a:hover
     .projects.section
     {
         grid-template-columns: repeat(3, 200px);
-
     }
     .box
     {
@@ -752,7 +732,6 @@ a:hover
     {
         grid-template-columns: repeat(2, 160px);
         gap: 5px;
-
     }
     .box
     {
@@ -815,9 +794,14 @@ a:hover
     transform: scale(1.05);
 }
 
-.bar.expanded {height: 370px;}
-.levendi-bar.expanded {height: 310px;}
-
+.bar.expanded 
+{
+    height: 370px;
+}
+.levendi-bar.expanded 
+{
+    height: 310px;
+}
 
 .bar h3
 {
@@ -834,7 +818,7 @@ a:hover
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .content p
@@ -842,120 +826,40 @@ a:hover
     color: black;
     cursor: pointer;
     font-size: 25px;
-    font-size: clamp(1rem, 1.4vw, 1.3rem);
-    line-height: 1.3em;
+    font-size: clamp(0.8rem, 2vw, 1.5rem);
 }
 
-.content b
-{
-    font-weight: 600;
-}
-.close-box
-{
-    position: absolute;
-    cursor: pointer;
-    top: 3%;
-    right: 2%;
-}
-.close
-{
-    width: auto;
-    height: 20px;
-    opacity: 0.7;
-    pointer-events: none;
+.hidden 
+{  
+    display: none;
 }
 
-.lightbox
-{
-    position: absolute;
-    top: 5%;
-    z-index: 100;
-    width: 100%;
-    height: 95%;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.itech 
+{    display: flex;
 }
-.lightbox.animate
-{
-    animation: pop 0.3s;
+.itech-spacer
+{    flex: 3
 }
-@keyframes pop
-{
-    0% {transform: scale(0)}
-    100% {transform: scale(1)}
-}
-
-#lightbox-0
-{
-    background: #78cff5;
-    height: 85%;
-}
-#lightbox-1
-{
-    background:#F0DB4F;
-    height: 90%;
-}
-#lightbox-2
-{
-    top: 20%;
-    margin-top: -10%;
-    background: #f06529;
-    height: 70%;
-}
-
-.text-box
-{
-
-    color: black;
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: space-around;
-}
-
-.itech-lb .text-box
-{
-    font-size: clamp(1.2rem, 3.5vw, 4vw);
-}
-.top-lb .text-box
-{
-    font-size: clamp(1.2rem, 3.5vw, 4vw);
-}
-
-.levendi-lb .text-box
-{
-    font-size: clamp(1.4rem, 3.5vw, 4vw);
-}
-
-
-
-.hidden {   display: none;}
-
-.itech {    display: flex;}
-
-.itech-spacer{    flex: 3}
-
 .itech-bar
 {
     flex: 10;
     background-color: #78cff5;
 
 }
-
-.itech-spacer2{    flex: 1}
+.itech-spacer2
+{    
+    flex: 1
+}
 
 .top
 {
     display: flex;
     flex-direction: row;
 }
-
-.top-spacer{    flex: 2}
-
+.top-spacer
+{    
+    flex: 2
+}
 .top-bar
 {
     flex: 5;
@@ -967,14 +871,16 @@ a:hover
     display: flex;
     flex-direction: row;
 }
-
 .levendi-bar
 {
     flex: 8;
     background-color: #f06529;
 }
+.levendi-spacer
+{    
+    flex: 10;
+}
 
-.levendi-spacer{    flex: 10;}
 
 .month-pointers
 {
@@ -982,23 +888,19 @@ a:hover
     display: flex;
     flex-direction: row;
 }
-
 .month
 {
     flex: 1;
     border-bottom: white solid 2px;
     border-right: white solid 2px;
     height: 15px;
-
 }
-
 .month-pointers div:first-child
 {
     border-left: white solid 2px;
     border-bottom: white solid 2px;
     border-right: white solid 2px;
 }
-
 .month-labels
 {
     display: flex;
