@@ -1,62 +1,67 @@
+//                                              SELECTORS & VARIABLES: FIXED ELEMENTS
+
 var sections = document.querySelectorAll(".section");
 var nextBtn = document.querySelector(".next-box");
 var prevBtn = document.querySelector(".prev-box");
 var navOptions = document.querySelectorAll(".option");
-var welcOption = document.querySelector(".welc-opt")
-var skillOption = document.querySelector(".skill-opt")
-var projOption = document.querySelector(".proj-opt")
-var expOption = document.querySelector(".exp-opt")
+var welcomePage = document.querySelector(".welc-opt")
+var skillPage = document.querySelector(".skill-opt")
+var projectsPage = document.querySelector(".proj-opt")
+var experiencePage = document.querySelector(".exp-opt")
 var slidePointer = document.querySelector(".slide-pointer")
 var slidePointerSmall = document.querySelector(".slide-pointer-small");
+var sectionTitleMobile = document.querySelector(".mobile-section-title");
+var contactIcons = document.querySelectorAll(".icon-box");
+var copied = document.querySelector(".copied-text");
+var currentSection = 0;
+
+//                                              SELECTORS & VARIABLES: SKILLS PAGE
+
+var skillBarColors = ["#F0DB4F", "#2965f1", "#f06529", "#78cff5", "#21759b", "#31A8FF", "#DC6920"];
+var skillBarList = ["js", "css", "html", "jq", "wp", "ps", "ai"];
+var skillBarPercentages = [73, 65, 80, 55, 60, 85, 82];
+var defaultSkillBarWidth = 31;
 var skillSect1 = document.querySelector(".skills .sect1");
 var skillSect2 = document.querySelector(".skills .sect2");
 var skillBarLvls = document.querySelectorAll(".bar-level");
 var skillBarTexts = document.querySelectorAll(".bar-title");
-var skillBarColors = ["#F0DB4F", "#2965f1", "#f06529", "#78cff5", "#21759b", "#31A8FF", "#DC6920"];
-var skillBarList = ["js", "css", "html", "jq", "wp", "ps", "ai"];
-var skillBarPercentages = [73, 65, 80, 55, 60, 85, 82];
-var defaultWidth = 31;
-var experienceList = document.querySelectorAll(".experience-li");
+var skillsButton = document.querySelector(".skills-button");
+
+//                                              SELECTORS & VARIABLES: PROJECT PAGE
+
+var projectBoxColours = ["#00AE6B", "#F0DB4F", "#2965f1", "#21759b", "#78cff5", "#f06529"];
 var projectBoxes = document.querySelectorAll(".box");
 var projectSlide1s = document.querySelectorAll(".project-slide1");
 var projectSlide2s = document.querySelectorAll(".project-slide2");
-var projectBoxColours = ["#00AE6B", "#F0DB4F", "#2965f1", "#21759b", "#78cff5", "#f06529"];
+
+//                                              SELECTORS & VARIABLES: EXPERIENCE PAGE
+
 var experienceBars = document.querySelectorAll(".bar");
-var sectionTitle = document.querySelector(".mobile-section-title");
-var skillsButton = document.querySelector(".skills-button");
-var contactIcons = document.querySelectorAll(".icon-box");
-var copied = document.querySelector(".copied-text");
 
 
-
-
-
-var currentSection = 0;
 
 
 //                                              FUNCTION DECLARATIONS
+
+jumpToFirstSection();
+
+nextBtn.onclick = () => slideLeft();
+prevBtn.onclick = () => slideRight();
+
+document.onkeydown = (e) => e["key"] == "ArrowRight" ? slideLeft() : e["key"] == "ArrowLeft" ? slideRight() : "";
+
+welcomePage.onclick = () => slideTo(0);
+skillPage.onclick = () => slideTo(1);
+projectsPage.onclick = () => slideTo(2);
+experiencePage.onclick = () => slideTo(3);
+
 setSkillBarsDefault();
-toFirstSection();
+animateSkillsButton();
 animateProjectPage()
 animateExperiencePage();
 
-nextBtn.onclick = () => slideLeft();
-document.onkeydown = (e) => 
-{ if (e["key"] == "ArrowRight") 
-    slideLeft();
- else if (e["key"] == "ArrowLeft")
-    slidePointeright();
-};
 
-prevBtn.onclick = () => slidePointeright();
-
-welcOption.onclick = () => slideTo(0);
-skillOption.onclick = () => slideTo(1);
-projOption.onclick = () => slideTo(2);
-expOption.onclick = () => slideTo(3);
-
-
-//                                              FUNCTION DEFINITIONS
+//                                              FUNCTION DEFINITIONS: FIXED ELEMENTS
 
 
 
@@ -86,39 +91,30 @@ contactIcons.forEach((icon, i) =>
 
 })
 
-function copy(val) 
+function copyText(val) 
 {
-   
     navigator.clipboard.writeText(val);
 }
 
 
-function toFirstSection()
+function jumpToFirstSection()
 {
     currentSection = 0;
 
-    changeSectionTitle(currentSection);
+    changeSectionTitleMobile(currentSection);
 
-
-    sections.forEach((section, i) =>
-    {
-        section.style.transform = `translateX(${i*100}%)`;
-    })
+    sections.forEach((section, i) => section.style.transform = `translateX(${i*100}%)`);
     
     moveslidePointer(currentSection);
 }
 
-function toLastSection()
+function jumpToLastSection()
 {
     currentSection = 3;
 
-    changeSectionTitle(currentSection);
+    changeSectionTitleMobile(currentSection);
 
-
-    sections.forEach((section, i) =>
-    {
-        section.style.transform = `translateX(${(i-3)*100}%)`;
-    }) 
+    sections.forEach((section, i) => section.style.transform = `translateX(${(i-3)*100}%)`); 
     
     moveslidePointer(currentSection);
 }
@@ -127,68 +123,48 @@ function slideLeft()
 {
     currentSection++;
 
-    changeSectionTitle(currentSection);
-
+    changeSectionTitleMobile(currentSection);
 
     activateSkillBars();
 
-
     if (currentSection <= 3)
     {
-        sections.forEach((section, i) =>
-        {
-            section.style.transform = `translateX(${(i - currentSection)*100}%)`;
-        })
-    
+        sections.forEach((section, i) => section.style.transform = `translateX(${(i - currentSection)*100}%)`);
     }
-    else if (currentSection == 4)
-    {
-        toFirstSection();
-    }
+    else currentSection == 4 ? jumpToFirstSection() : "";
 
     moveslidePointer(currentSection);
 }
 
-function slidePointeright()
+function slideRight()
 {
     currentSection--;
 
-    changeSectionTitle(currentSection);
-
+    changeSectionTitleMobile(currentSection);
 
     activateSkillBars();
 
     if (currentSection >=0)
     {
-        sections.forEach((section, i) =>
-        {
-            section.style.transform = `translateX(${(i - currentSection)*100}%)`;
-        })
+        sections.forEach((section, i) => section.style.transform = `translateX(${(i - currentSection)*100}%)`);
     }
-    else if (currentSection == -1)
-    {
-        toLastSection();
-    } 
-    moveslidePointer(currentSection);
+    else currentSection == -1 ? jumpToLastSection() : "";
 
+    moveslidePointer(currentSection);
 }
 
 function slideTo(secNum)
 {
     currentSection = secNum;
     
-    changeSectionTitle(currentSection);
+    changeSectionTitleMobile(currentSection);
 
     activateSkillBars();
 
-    sections.forEach((section, i) =>
-    {
-        section.style.transform = `translateX(${(i - currentSection)*100}%)`;
-    })
+    sections.forEach((section, i) => section.style.transform = `translateX(${(i - currentSection)*100}%)`);
+
     moveslidePointer(currentSection);
-
 }
-
 
 function moveslidePointer(val)
 {
@@ -242,6 +218,14 @@ function moveslidePointer(val)
     }
 }
 
+function changeSectionTitleMobile(currentSection)
+{
+    var sections = ["welcome", "skills", "projects", "experience"];
+    sectionTitleMobile.textContent = sections[currentSection];
+}
+
+//                                              FUNCTION DEFINITIONS: SKILLS PAGE
+
 
 function activateSkillBars() 
 {
@@ -260,35 +244,24 @@ function activateSkillBars()
 
 function shortenSkillBars()
 {
-    skillBarLvls.forEach(skillBar =>
-        {
-            skillBar.style.width = `0%`;
-        })
+    skillBarLvls.forEach(skillBar =>  skillBar.style.width = `0%`)
 }
 
 
 function extendSkillBars()
 {
-    skillBarLvls.forEach((skillBar, i) => 
-        skillBar.style.width = `${skillBarPercentages[i] - defaultWidth}%`);
-        
+    skillBarLvls.forEach((skillBar, i) => skillBar.style.width = `${skillBarPercentages[i] - defaultSkillBarWidth}%`)
 }
 
 function pulseSkillBars()
 {
     skillBarLvls.forEach((skillBar, i) =>
     {
-        skillBar.onmouseenter = () => 
-        {
-            skillBar.style.animation = `${skillBarList[i]}-pulse 1s`;
-        }
-        skillBar.addEventListener("animationend", () => 
-        {
-            skillBar.style.animation = "";
-        }) 
+        skillBar.onmouseenter = () => skillBar.style.animation = `${skillBarList[i]}-pulse 1s`;
+
+        skillBar.addEventListener("animationend", () => skillBar.style.animation = ""); 
     })
 }
-
 
 function setSkillBarsDefault()
 {
@@ -298,67 +271,73 @@ function setSkillBarsDefault()
         skillBar.style.background = `${skillBarColors[i]}`;
     })
 
-    skillBarTexts.forEach((text, i) =>
-    {
-        text.style.background = `${skillBarColors[i]}`;
-    })
+    skillBarTexts.forEach((text, i) => text.style.background = `${skillBarColors[i]}`);
 }
+
+//                                              FUNCTION DEFINITIONS: PROJECT PAGE
+
 
 function animateProjectPage()
 {
     projectBoxes.forEach(box =>
+    {
+        box.onmouseenter = (e) => 
         {
-            box.onmouseenter = (e) => 
-            {
-                var slideOne = e.path[0].children[0];
-                slideOne.classList.add("left");
-            }
-            box.onmouseleave = (e) => 
-            {
-                var slideOne = e.path[0].children[0];
-                slideOne.classList.remove("left");
-            }
-        })
+            var slideOne = e.path[0].children[0];
+            slideOne.classList.add("left");
+        }
+        box.onmouseleave = (e) => 
+        {
+            var slideOne = e.path[0].children[0];
+            slideOne.classList.remove("left");
+        }
+    })
         
-        projectSlide1s.forEach((slide, i) =>
-        {
-            slide.style.background = projectBoxColours[i];
-        })
-        
-        projectSlide2s.forEach((slide, i) =>
-        {
-            slide.style.background = projectBoxColours[i];
-        })
+    projectSlide1s.forEach((slide, i) =>  slide.style.background = projectBoxColours[i]);
+    projectSlide2s.forEach((slide, i) =>  slide.style.background = projectBoxColours[i]);
 }
+
+//                                              FUNCTION DEFINITIONS: EXPERIENCE PAGE
+
 
 function animateExperiencePage()
 {
-    experienceBars.forEach(bar =>
+    experienceBars.forEach((bar, i) =>
     {
-        var barClass = bar.classList;
         var titleClass = bar.children[0].classList;
         var contentClass = bar.children[1].classList;
-    
-        bar.onclick = () =>
+        var lightbox = document.querySelector(`#lightbox-${i}`);
+        var closeIcon = document.querySelector(`#closebox${i}`);
+
+        bar.onclick = () => 
         {
-            bar.classList.remove("hovered");
-    
-            if (barClass.contains("expanded"))
+            if (window.innerWidth <=900)
             {
-                barClass.toggle("expanded");
+                lightbox.classList.toggle("hidden");
+                lightbox.classList.toggle("animate");
+            }
+            else if (bar.classList.contains("expanded"))
+            {
+                bar.classList.toggle("expanded");
                 setTimeout(() =>
                 {
                     contentClass.toggle("hidden");
                     titleClass.toggle("hidden");
+                    
                 }, 350);
-            } else if (!barClass.contains("expanded"))
+            }
+            else 
             {
                 resetExpBars();
-                
                 contentClass.toggle("hidden");
                 titleClass.toggle("hidden");
-                barClass.toggle("expanded");
+                bar.classList.toggle("expanded");
             }
+        }
+        closeIcon.onclick = () =>
+        {
+            lightbox.classList.toggle("hidden");
+            lightbox.classList.toggle("animate");
         }
     })
 
@@ -368,39 +347,50 @@ function animateExperiencePage()
 function resetExpBars()
 {
     experienceBars.forEach(bar =>
-        {
-            bar.classList.remove("expanded");
-            bar.children[0].classList.remove("hidden");
-            bar.children[1].classList.add("hidden");
-        })
+    {
+        bar.classList.remove("expanded");
+        bar.children[0].classList.remove("hidden");
+        bar.children[1].classList.add("hidden");
+    })
 }
 
 function pulseExpBars()
 {
-    experienceBars.forEach(bar =>
+    experienceBars.forEach(bar => bar.onmouseenter = () => !bar.classList.contains("expanded") ? bar.classList.add("hovered") : "")
+    experienceBars.forEach(bar => bar.onmouseleave = () => bar.classList.remove("hovered"));
+}
+
+
+function animateSkillsButton()
+{
+    skillsButton.onmouseenter = () => 
     {
-        bar.onmouseenter = () => 
+        skillsButton.classList.toggle("pulseBtn");
+    
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) 
         {
-            if (!bar.classList.contains("expanded"))
-                bar.classList.add("hovered");
+            skillsButton.classList.add("open");
+            var plus = skillsButton.children[0];
+            var content = skillsButton.children[1];
+        
+            plus.classList.add("hide");
+            content.classList.remove("hide");
         }
-    })
-    experienceBars.forEach(bar => {bar.onmouseleave = () => bar.classList.remove("hovered");})
-}
-
-
-function changeSectionTitle(currentSection)
-{
-    var sections = ["welcome", "skills", "projects", "experience"];
-
-    sectionTitle.textContent = sections[currentSection];
-}
-
-skillsButton.onmouseenter = () => 
-{
-    skillsButton.classList.toggle("pulseBtn");
-
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) 
+    }
+    
+    skillsButton.onmouseleave = () => 
+    {
+        skillsButton.classList.toggle("pulseBtn");
+        skillsButton.classList.remove("open");
+        
+        var plus = skillsButton.children[0];
+        var content = skillsButton.children[1];
+    
+        plus.classList.remove("hide");
+        content.classList.add("hide");
+    }
+    
+    skillsButton.onclick = () => 
     {
         skillsButton.classList.add("open");
         var plus = skillsButton.children[0];
@@ -410,30 +400,11 @@ skillsButton.onmouseenter = () =>
         content.classList.remove("hide");
     }
 }
-skillsButton.onmouseleave = () => 
-{
-    skillsButton.classList.toggle("pulseBtn");
-    skillsButton.classList.remove("open");
-    
-    var plus = skillsButton.children[0];
-    var content = skillsButton.children[1];
 
-    plus.classList.remove("hide");
-    content.classList.add("hide");
-}
 
-skillsButton.onclick = () => 
-{
-    skillsButton.classList.add("open");
-    var plus = skillsButton.children[0];
-    var content = skillsButton.children[1];
 
-    plus.classList.add("hide");
-    content.classList.remove("hide");
-
-}
-
-function activateSkillsButton()
+/*function showSkillsButton()
 {
     skillsButton.classList.add("grow");
-}
+}*/
+

@@ -818,11 +818,6 @@ a:hover
 .bar.expanded {height: 370px;}
 .levendi-bar.expanded {height: 310px;}
 
-@media (max-width: 580px)
-{
-   
-}
-
 
 .bar h3
 {
@@ -839,7 +834,7 @@ a:hover
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .content p
@@ -847,8 +842,96 @@ a:hover
     color: black;
     cursor: pointer;
     font-size: 25px;
-    font-size: clamp(0.8rem, 2vw, 1.5rem);
+    font-size: clamp(1rem, 1.4vw, 1.3rem);
+    line-height: 1.3em;
 }
+
+.content b
+{
+    font-weight: 600;
+}
+.close-box
+{
+    position: absolute;
+    cursor: pointer;
+    top: 3%;
+    right: 2%;
+}
+.close
+{
+    width: auto;
+    height: 20px;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.lightbox
+{
+    position: absolute;
+    top: 5%;
+    z-index: 100;
+    width: 100%;
+    height: 95%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.lightbox.animate
+{
+    animation: pop 0.3s;
+}
+@keyframes pop
+{
+    0% {transform: scale(0)}
+    100% {transform: scale(1)}
+}
+
+#lightbox-0
+{
+    background: #78cff5;
+    height: 85%;
+}
+#lightbox-1
+{
+    background:#F0DB4F;
+    height: 90%;
+}
+#lightbox-2
+{
+    top: 20%;
+    margin-top: -10%;
+    background: #f06529;
+    height: 70%;
+}
+
+.text-box
+{
+
+    color: black;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+}
+
+.itech-lb .text-box
+{
+    font-size: clamp(1.2rem, 3.5vw, 4vw);
+}
+.top-lb .text-box
+{
+    font-size: clamp(1.2rem, 3.5vw, 4vw);
+}
+
+.levendi-lb .text-box
+{
+    font-size: clamp(1.4rem, 3.5vw, 4vw);
+}
+
+
 
 .hidden {   display: none;}
 
