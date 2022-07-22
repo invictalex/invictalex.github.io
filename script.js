@@ -297,19 +297,39 @@ function setSkillBarsDefault()
 
 function animateProjectPage()
 {
-    projectBoxes.forEach(box =>
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    if (isSafari)
     {
-        box.onmouseenter = (e) => 
-        {
-            var slideOne = e.path[0].children[0];
-            slideOne.classList.add("left");
-        }
-        box.onmouseleave = (e) => 
-        {
-            var slideOne = e.path[0].children[0];
-            slideOne.classList.remove("left");
-        }
-    })
+        projectBoxes.forEach(box =>
+            {
+                box.onclick = (e) => 
+                {
+                    var slideOne = e.path[0].children[0];
+                    slideOne.classList.add("left");
+                }
+                box.onclick = (e) => 
+                {
+                    var slideOne = e.path[0].children[0];
+                    slideOne.classList.remove("left");
+                }
+            })
+    } else
+    {
+        projectBoxes.forEach(box =>
+            {
+                box.onmouseenter = (e) => 
+                {
+                    var slideOne = e.path[0].children[0];
+                    slideOne.classList.add("left");
+                }
+                box.onmouseleave = (e) => 
+                {
+                    var slideOne = e.path[0].children[0];
+                    slideOne.classList.remove("left");
+                }
+            })
+    }
+   
         
     projectSlide1s.forEach((slide, i) =>  slide.style.background = projectBoxColours[i]);
     projectSlide2s.forEach((slide, i) =>  slide.style.background = projectBoxColours[i]);
