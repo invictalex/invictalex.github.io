@@ -26,6 +26,9 @@ var skillSect2 = document.querySelector(".skills .sect2");
 var skillBarLvls = document.querySelectorAll(".bar-level");
 var skillBarTexts = document.querySelectorAll(".bar-title");
 var skillsButton = document.querySelector(".skills-button");
+var expandBtn = document.querySelector(".expand-btn");
+var closeBtn = document.querySelector(".close-btn-box");
+var skillsList = document.querySelector(".skills-list");
 
 //                                              SELECTORS & VARIABLES: PROJECT PAGE
 
@@ -291,6 +294,35 @@ function setSkillBarsDefault()
 
     skillBarTexts.forEach((text, i) => text.style.background = `${skillBarColors[i]}`);
 }
+function animateSkillsButton()
+{
+    skillsButton.onmouseenter = () =>  skillsButton.classList.contains("open") ? "" : skillsButton.classList.add("pulseBtn");
+    
+    skillsButton.onmouseleave = () => skillsButton.classList.remove("pulseBtn");
+    
+    skillsButton.onmousedown = () => 
+    {
+        
+        skillsButton.classList.add("open");
+        skillsButton.classList.remove("pulseBtn");
+        expandBtn.classList.add("hide");
+        skillsList.classList.remove("hide");
+        closeBtn.classList.remove("hide");
+    }
+    skillsButton.onmouseup = () =>
+    {
+        closeBtn.onmouseup = () =>
+        {
+            skillsButton.classList.remove("open");
+            expandBtn.classList.remove("hide");
+            skillsList.classList.add("hide");
+            closeBtn.classList.add("hide");
+        }
+    }
+    
+
+    
+}
 
 //                                              FUNCTION DEFINITIONS: PROJECT PAGE
 
@@ -401,45 +433,7 @@ function pulseExpBars()
 }
 
 
-function animateSkillsButton()
-{
-    skillsButton.onmouseenter = () => 
-    {
-        skillsButton.classList.toggle("pulseBtn");
-    
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) 
-        {
-            skillsButton.classList.add("open");
-            var plus = skillsButton.children[0];
-            var content = skillsButton.children[1];
-        
-            plus.classList.add("hide");
-            content.classList.remove("hide");
-        }
-    }
-    
-    skillsButton.onmouseleave = () => 
-    {
-        skillsButton.classList.toggle("pulseBtn");
-        skillsButton.classList.remove("open");
-        
-        var plus = skillsButton.children[0];
-        var content = skillsButton.children[1];
-    
-        plus.classList.remove("hide");
-        content.classList.add("hide");
-    }
-    
-    skillsButton.onclick = () => 
-    {
-        skillsButton.classList.add("open");
-        var plus = skillsButton.children[0];
-        var content = skillsButton.children[1];
-    
-        plus.classList.add("hide");
-        content.classList.remove("hide");
-    }
-}
+
 
 
 
