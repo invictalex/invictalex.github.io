@@ -333,7 +333,7 @@ function animateProjectPage()
     {
         projectBoxes.forEach(box =>
         {
-            box.ontouchend = (e) => 
+            box.onclick = (e) => 
             {
                 var slideOne = e.path[0];
                 projectBoxes.forEach(box => box.firstChild !== slideOne ? box.children[0].classList.remove("left") : "")
