@@ -329,37 +329,34 @@ function animateSkillsButton()
 
 function animateProjectPage()
 {
-    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    if (isSafari)
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
     {
         projectBoxes.forEach(box =>
+        {
+            box.ontouchend = (e) => 
             {
-                box.onclick = (e) => 
-                {
-                    var slideOne = e.path[0].children[0];
-                    slideOne.classList.add("left");
-                }
-                box.onclick = (e) => 
-                {
-                    var slideOne = e.path[0].children[0];
-                    slideOne.classList.remove("left");
-                }
-            })
-    } else
+                var slideOne = e.path[0];
+                projectBoxes.forEach(box => box.firstChild !== slideOne ? box.children[0].classList.remove("left") : "")
+                
+                slideOne.classList.add("left");
+            }
+        })
+    }
+     else
     {
         projectBoxes.forEach(box =>
+        {
+            box.onmouseenter = (e) => 
             {
-                box.onmouseenter = (e) => 
-                {
-                    var slideOne = e.path[0].children[0];
-                    slideOne.classList.add("left");
-                }
-                box.onmouseleave = (e) => 
-                {
-                    var slideOne = e.path[0].children[0];
-                    slideOne.classList.remove("left");
-                }
-            })
+                var slideOne = e.path[0].children[0];
+                slideOne.classList.add("left");
+            }
+            box.onmouseleave = (e) => 
+            {
+                var slideOne = e.path[0].children[0];
+                slideOne.classList.remove("left");
+            }
+        })
     }
    
         
