@@ -329,14 +329,16 @@ function animateSkillsButton()
 
 function animateProjectPage()
 {
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    if (isIOS)
     {
+        alert("WORKING FUCKER");
         projectBoxes.forEach((box, i) =>
         {
             box.onclick = () => 
             {
                 var selectedSlide = document.querySelector(`proj${i}`);
-                
+
                 projectSlide1s.forEach(slide =>  !slide.classList.contains(`proj${i}`) ? slide.classList.remove("left") : "")
                 
                 selectedSlide.classList.add("left");
