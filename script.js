@@ -337,7 +337,8 @@ function animateProjectPage()
         {
             box.onclick = () => 
             {
-                var selectedSlide = document.querySelector(`proj${i}`);
+                console.log(i);
+                var selectedSlide = document.querySelector(`.proj${i}`);
 
                 projectSlide1s.forEach(slide =>  !slide.classList.contains(`proj${i}`) ? slide.classList.remove("left") : "")
                 
