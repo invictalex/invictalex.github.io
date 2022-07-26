@@ -332,7 +332,6 @@ function animateProjectPage()
     var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     if (isIOS)
     {
-        alert("WORKING FUCKER");
         projectBoxes.forEach((box, i) =>
         {
             box.onclick = () => 
