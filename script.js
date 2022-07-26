@@ -331,15 +331,15 @@ function animateProjectPage()
 {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
     {
-        projectBoxes.forEach(box =>
+        projectBoxes.forEach((box, i) =>
         {
-            box.onclick = (e) => 
+            box.onclick = () => 
             {
-                alert("working");
-                var slideOne = e.path[0];
-                projectBoxes.forEach(box => box.firstChild !== slideOne ? box.children[0].classList.remove("left") : "")
+                var selectedSlide = document.querySelector(`proj${i}`);
                 
-                slideOne.classList.add("left");
+                projectSlide1s.forEach(slide =>  !slide.classList.contains(`proj${i}`) ? slide.classList.remove("left") : "")
+                
+                selectedSlide.classList.add("left");
             }
         })
     }
