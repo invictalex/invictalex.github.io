@@ -335,6 +335,7 @@ function animateProjectPage()
         {
             box.onclick = (e) => 
             {
+                alert("working");
                 var slideOne = e.path[0];
                 projectBoxes.forEach(box => box.firstChild !== slideOne ? box.children[0].classList.remove("left") : "")
                 
